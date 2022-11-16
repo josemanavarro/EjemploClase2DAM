@@ -1,0 +1,21 @@
+﻿<Window x:Class="EjemploClase2DAM.DialogoReserva"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EjemploClase2DAM"
+        mc:Ignorable="d"
+        Title="Reserva" Height="332" Width="417">
+    <Grid>
+        <Label Content="Aula" Margin="52,0,253,268" VerticalAlignment="Bottom"/>
+        <Label Content="Profesor" Margin="52,0,253,228" VerticalAlignment="Bottom"/>
+        <Label Content="Alumnos" Margin="52,0,253,188" VerticalAlignment="Bottom"/>
+        <Label Content="Fecha" Margin="52,0,253,148" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="TextBoxAula" Margin="152,0,102,276" TextWrapping="Wrap" Text="{Binding Path=Aula}" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="TextBoxProfesor" Margin="152,0,102,236" TextWrapping="Wrap" Text="{Binding Path=Profesor}" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="TextBoxAlumnos" Margin="152,0,102,196" TextWrapping="Wrap" Text="{Binding Path=Alumnos}" VerticalAlignment="Bottom"/>
+        <DatePicker x:Name="DatePickerFecha" Margin="152,0,102,150" SelectedDate="{Binding Path=Fecha}" VerticalAlignment="Bottom"/>
+        <Button x:Name="ButtonAceptar" Content="Aceptar" Margin="109,0,214,84" VerticalAlignment="Bottom" Click="ButtonAceptar_Click"/>
+        <Button x:Name="ButtonCancelar" Content="Cancelar" Margin="221,0,102,84" VerticalAlignment="Bottom" Click="ButtonCancelar_Click"/>
+    </Grid>
+</Window>
