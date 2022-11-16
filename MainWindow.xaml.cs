@@ -44,13 +44,25 @@ namespace EjemploClase2DAM
 
         private void ButtonModificar_Click(object sender, RoutedEventArgs e)
         {
-            DialogoReserva reserva = new DialogoReserva(logicaReservas,(Reserva)dataGridReservas.SelectedItem,dataGridReservas.SelectedIndex);
-            reserva.Show();
+            if (dataGridReservas.SelectedIndex != -1)
+            {
+                Reserva reserva = (Reserva)dataGridReservas.SelectedItem;
+                DialogoReserva dialogoReserva = new DialogoReserva(logicaReservas, (Reserva)reserva.Clone(), dataGridReservas.SelectedIndex);
+                dialogoReserva.Show();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un item de la tabla", "Error selección", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+                
         }
 
         private void ButtonEliminar_Click(object sender, RoutedEventArgs e)
         {
-            logicaReservas.eliminarRserva(dataGridReservas.SelectedIndex);
+            if (dataGridReservas.SelectedIndex != -1)
+                logicaReservas.eliminarRserva(dataGridReservas.SelectedIndex);
+            else
+                MessageBox.Show("Debe seleccionar un item de la tabla", "Error selección", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

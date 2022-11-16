@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EjemploClase2DAM.dto
 {
-    public class Reserva : INotifyPropertyChanged
+    public class Reserva : INotifyPropertyChanged, ICloneable, IDataErrorInfo
     {
         private string aula;
         public string Aula { 
@@ -79,6 +79,41 @@ namespace EjemploClase2DAM.dto
             this.fecha = fecha;
         }
 
+        public Object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public string Error => throw new NotImplementedException();
+
+        public string this[string columnName]
+        {
+            get {
+                string result = "";
+                if (columnName == "Aula") { 
+                    if (string.IsNullOrEmpty(this.aula))
+                    {
+                        result = "El campo aula no debe estar vacio";
+                    }
+                }
+                if (columnName == "Profesor")
+                {
+                    if (string.IsNullOrEmpty(this.profesor))
+                    {
+                        result = "El campo profesor no debe estar vacio";
+                    }
+                }
+                if (columnName == "Alumnos")
+                {
+                    if (this.alumnos <= 0)
+                    {
+                        result = "El campo aula no debe ser menor o igual que cero";
+                    }
+                }
+                return result;
+            }
+        }
     }
 }
